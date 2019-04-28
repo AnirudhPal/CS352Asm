@@ -59,8 +59,8 @@
 %right '='
 
 %%
-Program   : MainClass ClassDeclList             {if(!($1->typeCheck() || typeerror)) {classGlob.print(); openFile(); $1->assemble(); closeMain(); classGlob.assemble(); closeFile(); $1->print(); std::cout << "\n\n"; $$->compute();}}
-          | MainClass                           {if(!($$->typeCheck())) {openFile(); $$->assemble(); closeMain(); closeFile(); $$->print(); std::cout << "\n\n"; $$->compute();}}
+Program   : MainClass ClassDeclList             {if(!($1->typeCheck() || typeerror)) {openFile(); $1->assemble(); closeMain(); classGlob.assemble(); closeFile();}}
+          | MainClass                           {if(!($$->typeCheck())) {openFile(); $$->assemble(); closeMain(); closeFile();}}
           ;
 
 MainClass : CLASS ID '{' PUBLIC STATIC VOID MAIN '(' STRING BRACKS ID ')' '{' Statement '}' '}' {$$ = $14;}

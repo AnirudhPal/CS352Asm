@@ -5,4 +5,4 @@ y.tab.c: mjavac.y
 lex.yy.c: mjavac.l
 	flex mjavac.l
 clean:
-	del -r lex.yy.c y.tab.c mjavac.exe y.dot y.output y.tab.h *.s\
+	rm -r lex.yy.c y.tab.c mjavac y.dot y.output y.tab.h *.s\
